@@ -26,3 +26,12 @@
 
 1. 获取博客
 2. 获取博客列表
+
+## QA
+
+1. 如何从数据库层面杜绝重复数据出现？
+
+答：对于 `thumb` 表，使用联合唯一索引
+```mysql
+CREATE UNIQUE INDEX idx_userId_blogId ON thumb (userId, blogId);
+```
