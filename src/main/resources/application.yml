@@ -4,6 +4,17 @@ spring:
   mvc:
     servlet:
       path: /api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://47.121.181.112:3306/thumb_up
+    username: root
+    password: dn293830
+
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
 # springdoc-openapi项目配置
 springdoc:
