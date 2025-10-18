@@ -1,5 +1,8 @@
 package cn.hezhaohui.thumb.exception;
 
+import lombok.Getter;
+
+@Getter
 public class BusinessException extends RuntimeException{
 
     private final int code;
