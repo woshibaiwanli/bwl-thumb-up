@@ -26,7 +26,6 @@ public class UserController {
 
     @GetMapping("/get/login")
     public BaseResponse<User> getLoginUser(HttpServletRequest request) {
-        User loginUser = (User) request.getSession().getAttribute(UserConstant.LOGIN_USER);
-        return ResultUtils.sucess(loginUser);
+        return ResultUtils.sucess(userService.getLoginUser(request));
     }
 }

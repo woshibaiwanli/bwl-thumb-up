@@ -2,6 +2,7 @@ package cn.hezhaohui.thumb.service;
 
 import cn.hezhaohui.thumb.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * @author 23117
@@ -10,4 +11,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface UserService extends IService<User> {
 
+    public User getLoginUser(HttpServletRequest request);
 }

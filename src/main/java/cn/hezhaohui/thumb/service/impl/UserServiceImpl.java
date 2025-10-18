@@ -1,9 +1,11 @@
 package cn.hezhaohui.thumb.service.impl;
 
+import cn.hezhaohui.thumb.constent.UserConstant;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.hezhaohui.thumb.model.entity.User;
 import cn.hezhaohui.thumb.service.UserService;
 import cn.hezhaohui.thumb.mapper.UserMapper;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +17,11 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     implements UserService{
 
+
+    @Override
+    public User getLoginUser(HttpServletRequest request) {
+        return (User) request.getSession().getAttribute(UserConstant.LOGIN_USER);
+    }
 }
 
 
