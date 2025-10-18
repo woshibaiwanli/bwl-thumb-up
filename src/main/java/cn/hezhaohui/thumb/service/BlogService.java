@@ -1,7 +1,9 @@
 package cn.hezhaohui.thumb.service;
 
 import cn.hezhaohui.thumb.model.entity.Blog;
+import cn.hezhaohui.thumb.model.vo.BlogVO;
 import com.baomidou.mybatisplus.extension.service.IService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * @author 23117
@@ -10,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface BlogService extends IService<Blog> {
 
+
+    BlogVO getBlogVOById(long blogId, HttpServletRequest request);
 }
