@@ -27,10 +27,10 @@ public class Thumb {
     /**
      * 博客 id
      */
-    private Long blogid;
+    private Long blogId;
 
     /**
      * 创建时间
      */
-    private Date createtime;
+    private Date createTime;
 }
