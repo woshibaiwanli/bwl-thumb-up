@@ -35,3 +35,10 @@
 ```mysql
 CREATE UNIQUE INDEX idx_userId_blogId ON thumb (userId, blogId);
 ```
+
+2. 为什么要在 `BlogServiceImpl` 导入 `ThumbService` 上加 `@Lazy`
+
+答：
+- 博客服务中需要使用点赞服务查询博客对应的点赞情况列表以返回对应视图。
+- 点赞服务中需要使用博客服务更新单条博客的点赞计数器。
+- 两个服务之间产生了**循环依赖**，Spring Boot 2.6 以后的版本默认不允许循环依赖，这里可以使用懒加载的方式避免这一问题。
