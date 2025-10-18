@@ -1,7 +1,9 @@
 package cn.hezhaohui.thumb.service;
 
+import cn.hezhaohui.thumb.model.dto.DoThumbRequest;
 import cn.hezhaohui.thumb.model.entity.Thumb;
 import com.baomidou.mybatisplus.extension.service.IService;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
 * @author 23117
@@ -10,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface ThumbService extends IService<Thumb> {
 
+
+    Boolean doThumb(DoThumbRequest doThumbRequest, HttpServletRequest request);
 }
