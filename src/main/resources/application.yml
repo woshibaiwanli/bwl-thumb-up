@@ -9,6 +9,13 @@ spring:
     url: jdbc:mysql://47.121.181.112:3306/thumb_up
     username: root
     password: dn293830
+  data:
+    redis:
+      database: 0
+      host: 47.121.181.112
+      port: 6379
+      password: dn293830
+      connect-timeout: 5000
 
 
 mybatis-plus:
