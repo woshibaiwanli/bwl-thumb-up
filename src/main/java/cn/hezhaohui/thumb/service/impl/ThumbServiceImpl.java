@@ -67,6 +67,37 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
             });
         }
     }
+
+    @Override
+    public Boolean undoThumb(DoThumbRequest doThumbRequest, HttpServletRequest request) {
+        if (doThumbRequest == null || doThumbRequest.getBlogId() == null) {
+            throw new RuntimeException("参数异常");
+        }
+        User loginUser = userService.getLoginUser(request);
+        // Lock: 这里使用字符串加锁，获取字符串常量对象才可运行，字符串常量对象具有唯一性
+        synchronized (("LOCK-USERID-" + loginUser.getId().toString()).intern()) {
+            // Transaction: 编程式事务
+            return transactionTemplate.execute(status -> {
+                Long blogId = doThumbRequest.getBlogId();
+                // 判断是否已点过赞
+                Thumb thumb = this.lambdaQuery()
+                        .eq(Thumb::getUserid, loginUser.getId())
+                        .eq(Thumb::getBlogId, blogId)
+                        .one();
+                if (thumb == null) {
+                    throw new BusinessException(ErrorCode.OPERATION_ERROR, "用户未点赞");
+                }
+                // 更新帖子点赞计数器
+                boolean update = blogService.lambdaUpdate()
+                        .eq(Blog::getId, blogId)
+                        .setSql("thumbCount = thumbCount - 1")
+                        .update();
+                // 更新点赞表数据
+                // 两者一起执行
+                return update && this.removeById(thumb.getId());
+            });
+        }
+    }
 }
 
 
