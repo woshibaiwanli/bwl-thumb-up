@@ -29,31 +29,46 @@
 
 ## QA
 
-1. 如何从数据库层面杜绝重复数据出现？
+> Q1. _联合唯一索引_ | 如何从数据库层面杜绝重复数据出现？
 
-答：对于 `thumb` 表，使用联合唯一索引
+对于 `thumb` 表，使用联合唯一索引
 ```mysql
 CREATE UNIQUE INDEX idx_userId_blogId ON thumb (userId, blogId);
 ```
 
-2. 为什么要在 `BlogServiceImpl` 导入 `ThumbService` 上加 `@Lazy`
+---
 
-答：
+> Q2. _循环依赖_ | 为什么要在 `BlogServiceImpl` 导入 `ThumbService` 上加 `@Lazy`
+
 - 博客服务中需要使用点赞服务查询博客对应的点赞情况列表以返回对应视图。
 - 点赞服务中需要使用博客服务更新单条博客的点赞计数器。
 - 两个服务之间产生了**循环依赖**，Spring Boot 2.6 以后的版本默认不允许循环依赖，这里可以使用懒加载的方式避免这一问题。
 
-3. 点赞接口加锁对象是什么？
+---
 
-答：
+> Q3. _锁_ | 点赞接口加锁对象是什么？对用户加锁还是对帖子加锁？
+
 - 加锁目的是为了避免用户并发请求造成数据不一致。
 - 不能对帖子加锁，因为帖子是全局的，加锁会导致其他用户无法点赞。
 - 因此需要对用户加锁，故而实际上是将每个用户的 id 当作锁。
 
-4. 点赞接口的锁具体如何处理？
 
-答：
-`synchronized (("LOCK-USERID-" + loginUser.getId().toString()).intern()) `
+---
+
+
+> Q4. _字符串对象锁_ | 点赞接口的锁具体如何处理？
+
+- `synchronized (("LOCK-USERID-" + loginUser.getId().toString()).intern()) `
 - 每个用户持有一个唯一 id，因此考虑把 id 对应的 String 常量池对象加锁。
 - 为了避免对程序中其他需要使用该字符串常量的地方产生影响，这里对字符串作出处理 `"LOCK-USERID-" + loginUser.getId().toString()`
 - 并且我们需要将字符串放到常量池中，调用 `intern()` 方法。
+
+---
+
+> Q5. _序列化_ | 对于 Redis 数据的存储使用序列化是怎么样的？
+
+- `key` 和 `hash filed` 使用 String 类型，`value` 使用 Object 类型。
+- `value` 为 `Long` 或者 `Integer` 类型时，优先进行以下操作——
+  - 存储时转化为 `String` 类型
+  - 取出时转化为 `Long` 或者 `Integer` 类型
+  - (注意转化前需要先判空，避免空指针)
