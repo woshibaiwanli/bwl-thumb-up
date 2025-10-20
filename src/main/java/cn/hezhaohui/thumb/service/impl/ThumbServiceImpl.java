@@ -1,5 +1,6 @@
 package cn.hezhaohui.thumb.service.impl;
 
+import cn.hezhaohui.thumb.constent.ThumbConstant;
 import cn.hezhaohui.thumb.exception.BusinessException;
 import cn.hezhaohui.thumb.exception.ErrorCode;
 import cn.hezhaohui.thumb.model.dto.DoThumbRequest;
@@ -13,6 +14,7 @@ import cn.hezhaohui.thumb.service.ThumbService;
 import cn.hezhaohui.thumb.mapper.ThumbMapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -34,6 +36,9 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
     @Resource
     private TransactionTemplate transactionTemplate;
 
+    @Resource
+    private RedisTemplate<String, Object> redisTemplate;
+
     @Override
     public Boolean doThumb(DoThumbRequest doThumbRequest, HttpServletRequest request) {
         if (doThumbRequest == null || doThumbRequest.getBlogId() == null) {
@@ -46,10 +51,7 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
             return transactionTemplate.execute(status -> {
                 Long blogId = doThumbRequest.getBlogId();
                 // 判断是否已点过赞
-                boolean exists = this.lambdaQuery()
-                        .eq(Thumb::getUserid, loginUser.getId())
-                        .eq(Thumb::getBlogId, blogId)
-                        .exists();
+                Boolean exists = this.hasThumb(blogId, loginUser.getId());
                 if (exists) {
                     throw new BusinessException(ErrorCode.OPERATION_ERROR, "用户已点赞");
                 }
@@ -63,7 +65,12 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
                 thumb.setUserid(loginUser.getId());
                 thumb.setBlogId(blogId);
                 // 两者一起执行
-                return update && this.save(thumb);
+                boolean success = update && this.save(thumb);
+                // 点赞记录存入 Redis
+                if (success) {
+                    redisTemplate.opsForHash().put(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString(), thumb.getId());
+                }
+                return success;
             });
         }
     }
@@ -80,11 +87,9 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
             return transactionTemplate.execute(status -> {
                 Long blogId = doThumbRequest.getBlogId();
                 // 判断是否已点过赞
-                Thumb thumb = this.lambdaQuery()
-                        .eq(Thumb::getUserid, loginUser.getId())
-                        .eq(Thumb::getBlogId, blogId)
-                        .one();
-                if (thumb == null) {
+                Object thumbIdObj = redisTemplate.opsForHash().get(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString());
+                Long thumbId = thumbIdObj == null ? null : ((Number) thumbIdObj).longValue();
+                if (thumbId == null) {
                     throw new BusinessException(ErrorCode.OPERATION_ERROR, "用户未点赞");
                 }
                 // 更新帖子点赞计数器
@@ -94,9 +99,18 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
                         .update();
                 // 更新点赞表数据
                 // 两者一起执行
-                return update && this.removeById(thumb.getId());
+                boolean success = update && this.removeById(thumbId);
+                if (success) {
+                    redisTemplate.opsForHash().delete(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId(), blogId.toString());
+                }
+                return success;
             });
         }
+    }
+
+    @Override
+    public Boolean hasThumb(Long blogId, Long userId) {
+        return redisTemplate.opsForHash().hasKey(ThumbConstant.USER_THUMB_KEY_PREFIX + userId, blogId.toString());
     }
 }
 
