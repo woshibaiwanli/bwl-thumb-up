@@ -72,3 +72,19 @@ CREATE UNIQUE INDEX idx_userId_blogId ON thumb (userId, blogId);
   - 存储时转化为 `String` 类型
   - 取出时转化为 `Long` 或者 `Integer` 类型
   - (注意转化前需要先判空，避免空指针)
+
+---
+
+> Q6. _类型转换_ | `Object` 向 `Long` 的转化优化方式
+
+- 方法 A
+  - `Long.valueOf(object.toString())`
+  - 注意：`object` 为非数字字符串时会抛出 `NumberFormatException``
+- 方法 B
+  - `((Number) object).longValue() `
+  - 注意：`object` 为非数字字符串时会抛出 `ClassCastException``
+- 比较
+  - 方法 B 优于方法 A
+    - 方法 A 需要调用 `toString()` 方法，有额外开销
+    - 方法 B 直接调用 `longValue()` 方法，`JVM` 优化
+    - 方法 B 抛出的异常容易定位问题。
