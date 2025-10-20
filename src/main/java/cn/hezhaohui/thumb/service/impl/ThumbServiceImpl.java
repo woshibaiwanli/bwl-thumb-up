@@ -88,10 +88,10 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
                 Long blogId = doThumbRequest.getBlogId();
                 // 判断是否已点过赞
                 Object thumbIdObj = redisTemplate.opsForHash().get(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId().toString(), blogId.toString());
-                Long thumbId = thumbIdObj == null ? null : ((Number) thumbIdObj).longValue();
-                if (thumbId == null) {
+                if (thumbIdObj == null) {
                     throw new BusinessException(ErrorCode.OPERATION_ERROR, "用户未点赞");
                 }
+                Long thumbId = ((Number) thumbIdObj).longValue();
                 // 更新帖子点赞计数器
                 boolean update = blogService.lambdaUpdate()
                         .eq(Blog::getId, blogId)
