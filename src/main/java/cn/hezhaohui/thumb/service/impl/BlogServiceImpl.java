@@ -5,6 +5,7 @@ import cn.hezhaohui.thumb.model.entity.User;
 import cn.hezhaohui.thumb.model.vo.BlogVO;
 import cn.hezhaohui.thumb.service.ThumbService;
 import cn.hezhaohui.thumb.service.UserService;
+import cn.hezhaohui.thumb.util.RedisKeyUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -56,7 +57,7 @@ public class BlogServiceImpl extends ServiceImpl<BlogMapper, Blog>
             // Blog Id
             List<Object> blogIdList = blogList.stream().map(blog -> blog.getId().toString()).collect(Collectors.toList());
             // Get Thumb-up Data
-            List<Object> thumbList = redisTemplate.opsForHash().multiGet(ThumbConstant.USER_THUMB_KEY_PREFIX + loginUser.getId(), blogIdList);
+            List<Object> thumbList = redisTemplate.opsForHash().multiGet(RedisKeyUtil.getUserThumbKey(loginUser.getId()), blogIdList);
             for (int i = 0; i < thumbList.size(); i++) {
                 if (thumbList.get(i) == null) {
                     continue;

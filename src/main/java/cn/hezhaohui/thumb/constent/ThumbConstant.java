@@ -12,4 +12,10 @@ public interface ThumbConstant {
      * 用于作为Redis中存储用户点赞信息的key前缀
      */
     String USER_THUMB_KEY_PREFIX = "thumb:";
+
+    /**
+     * 临时点赞前缀常量
+     * 用于作为Redis中存储临时点赞信息的key前缀
+     */
+    String TEMP_THUMB_KEY_PREFIX = "temp_thumb:%s";
 }
