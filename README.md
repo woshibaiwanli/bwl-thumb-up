@@ -88,3 +88,13 @@ CREATE UNIQUE INDEX idx_userId_blogId ON thumb (userId, blogId);
     - 方法 A 需要调用 `toString()` 方法，有额外开销
     - 方法 B 直接调用 `longValue()` 方法，`JVM` 优化
     - 方法 B 抛出的异常容易定位问题。
+
+---
+
+> Q7. _常量_ | 定义常量的最佳方式？
+
+- > "Do not use interfaces for constants. Interfaces are for defining types and behaviors, not for storing data."
+  > 
+  > — _Effective Java  Item 18_
+- 不建议选择 `Interface` 定义常量
+- 而应该选用 `Class - public static final String` 定义常量
