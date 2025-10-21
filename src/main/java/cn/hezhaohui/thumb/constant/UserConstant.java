@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.constent;
+package cn.hezhaohui.thumb.constant;
 
 public class UserConstant {
 

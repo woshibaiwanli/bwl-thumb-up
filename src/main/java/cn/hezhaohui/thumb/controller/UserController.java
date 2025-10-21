@@ -2,7 +2,7 @@ package cn.hezhaohui.thumb.controller;
 
 import cn.hezhaohui.thumb.common.BaseResponse;
 import cn.hezhaohui.thumb.common.ResultUtils;
-import cn.hezhaohui.thumb.constent.UserConstant;
+import cn.hezhaohui.thumb.constant.UserConstant;
 import cn.hezhaohui.thumb.model.entity.User;
 import cn.hezhaohui.thumb.service.UserService;
 import jakarta.annotation.Resource;

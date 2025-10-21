@@ -1,6 +1,6 @@
 package cn.hezhaohui.thumb.service.impl;
 
-import cn.hezhaohui.thumb.constent.UserConstant;
+import cn.hezhaohui.thumb.constant.UserConstant;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import cn.hezhaohui.thumb.model.entity.User;
 import cn.hezhaohui.thumb.service.UserService;

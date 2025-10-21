@@ -1,6 +1,6 @@
 package cn.hezhaohui.thumb.util;
 
-import cn.hezhaohui.thumb.constent.ThumbConstant;
+import cn.hezhaohui.thumb.constant.ThumbConstant;
 
 public class RedisKeyUtil {
 

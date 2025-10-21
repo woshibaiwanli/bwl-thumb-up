@@ -1,6 +1,5 @@
 package cn.hezhaohui.thumb.service.impl;
 
-import cn.hezhaohui.thumb.constent.ThumbConstant;
 import cn.hezhaohui.thumb.exception.BusinessException;
 import cn.hezhaohui.thumb.exception.ErrorCode;
 import cn.hezhaohui.thumb.model.dto.DoThumbRequest;

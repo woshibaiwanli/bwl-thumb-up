@@ -1,6 +1,5 @@
 package cn.hezhaohui.thumb.service.impl;
 
-import cn.hezhaohui.thumb.constent.ThumbConstant;
 import cn.hezhaohui.thumb.model.entity.User;
 import cn.hezhaohui.thumb.model.vo.BlogVO;
 import cn.hezhaohui.thumb.service.ThumbService;
