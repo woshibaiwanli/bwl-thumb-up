@@ -8,11 +8,11 @@
             <id property="id" column="id" />
             <result property="userid" column="userId" />
             <result property="title" column="title" />
-            <result property="coverimg" column="coverImg" />
+            <result property="coverImg" column="coverImg" />
             <result property="content" column="content" />
-            <result property="thumbcount" column="thumbCount" />
-            <result property="createtime" column="createTime" />
-            <result property="updatetime" column="updateTime" />
+            <result property="thumbCount" column="thumbCount" />
+            <result property="createTime" column="createTime" />
+            <result property="updateTime" column="updateTime" />
     </resultMap>
 
     <sql id="Base_Column_List">
