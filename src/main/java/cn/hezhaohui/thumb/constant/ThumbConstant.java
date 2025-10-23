@@ -18,4 +18,6 @@ public class ThumbConstant {
      * 用于作为Redis中存储临时点赞信息的key前缀
      */
     public static final String TEMP_THUMB_KEY_PREFIX = "temp_thumb:%s";
+
+    public static final Long UN_THUMB_CONSTANT = 0L;
 }
