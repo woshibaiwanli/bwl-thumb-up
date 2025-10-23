@@ -7,7 +7,7 @@ public enum LuaStatusEnum {
     // 成功
     SUCCESS(1L),
     // 失败
-    FAIL(0L);
+    FAIL(-1L);
 
     private final long value;
 
