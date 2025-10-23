@@ -1,7 +1,9 @@
 package cn.hezhaohui.thumb.service.impl;
 
+import cn.hezhaohui.thumb.constant.ThumbConstant;
 import cn.hezhaohui.thumb.exception.BusinessException;
 import cn.hezhaohui.thumb.exception.ErrorCode;
+import cn.hezhaohui.thumb.manager.cache.CacheManager;
 import cn.hezhaohui.thumb.model.dto.DoThumbRequest;
 import cn.hezhaohui.thumb.model.entity.Blog;
 import cn.hezhaohui.thumb.model.entity.User;
@@ -14,6 +16,7 @@ import cn.hezhaohui.thumb.service.ThumbService;
 import cn.hezhaohui.thumb.mapper.ThumbMapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
@@ -23,7 +26,8 @@ import org.springframework.transaction.support.TransactionTemplate;
 * @description 针对表【thumb】的数据库操作Service实现
 * @createDate 2025-10-18 14:51:00
 */
-@Service("thumbServiceDB")
+@Service("thumbService")
+@Slf4j
 public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
     implements ThumbService{
 
@@ -38,6 +42,9 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
 
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
+
+    @Resource
+    private CacheManager cacheManager;
 
     @Override
     public Boolean doThumb(DoThumbRequest doThumbRequest, HttpServletRequest request) {
@@ -110,7 +117,9 @@ public class ThumbServiceImpl extends ServiceImpl<ThumbMapper, Thumb>
 
     @Override
     public Boolean hasThumb(Long blogId, Long userId) {
-        return redisTemplate.opsForHash().hasKey(RedisKeyUtil.getUserThumbKey(userId), blogId.toString());
+//        一级缓存
+//        return redisTemplate.opsForHash().hasKey(RedisKeyUtil.getUserThumbKey(userId), blogId.toString());
+        return cacheManager.get(ThumbConstant.USER_THUMB_KEY_PREFIX + userId, blogId.toString()) != null;
     }
 }
 
