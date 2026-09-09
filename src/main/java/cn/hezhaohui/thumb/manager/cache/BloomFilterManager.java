@@ -1,8 +1,12 @@
 package cn.hezhaohui.thumb.manager.cache;
 
+import cn.hezhaohui.thumb.mapper.ThumbMapper;
+import cn.hezhaohui.thumb.model.entity.Thumb;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -35,12 +39,21 @@ public class BloomFilterManager {
      */
     private static double FPP = 0.01;
 
+    @Resource
+    private ThumbMapper thumbMapper;
+
     @PostConstruct
     public void init() {
         thumbBloomFilter = BloomFilter.create(
                 Funnels.stringFunnel(java.nio.charset.StandardCharsets.UTF_8),
                 EXPECTED_INSERTIONS,
                 FPP
+        );
+        // 从数据库加载所有历史点赞记录到布隆过滤器
+        LambdaQueryWrapper<Thumb> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.select(Thumb::getUserid, Thumb::getBlogId);
+        thumbMapper.selectList(queryWrapper).forEach(thumb ->
+                thumbBloomFilter.put(buildKey(thumb.getUserid(), thumb.getBlogId()))
         );
         log.info("布隆过滤器初始化完成，预期插入量: {}, 误判率: {}", EXPECTED_INSERTIONS, FPP);
     }
