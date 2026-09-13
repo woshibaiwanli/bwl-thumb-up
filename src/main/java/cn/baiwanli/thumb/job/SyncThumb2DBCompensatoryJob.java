@@ -1,7 +1,7 @@
-package cn.hezhaohui.thumb.job;
+package cn.baiwanli.thumb.job;
 
-import cn.hezhaohui.thumb.constant.ThumbConstant;
-import cn.hezhaohui.thumb.util.RedisKeyUtil;
+import cn.baiwanli.thumb.constant.ThumbConstant;
+import cn.baiwanli.thumb.util.RedisKeyUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.util.ObjUtil;
 import jakarta.annotation.Resource;

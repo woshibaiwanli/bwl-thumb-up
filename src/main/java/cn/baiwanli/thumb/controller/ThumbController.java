@@ -1,9 +1,9 @@
-package cn.hezhaohui.thumb.controller;
+package cn.baiwanli.thumb.controller;
 
-import cn.hezhaohui.thumb.common.BaseResponse;
-import cn.hezhaohui.thumb.common.ResultUtils;
-import cn.hezhaohui.thumb.model.dto.DoThumbRequest;
-import cn.hezhaohui.thumb.service.ThumbService;
+import cn.baiwanli.thumb.common.BaseResponse;
+import cn.baiwanli.thumb.common.ResultUtils;
+import cn.baiwanli.thumb.model.dto.DoThumbRequest;
+import cn.baiwanli.thumb.service.ThumbService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;

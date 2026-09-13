@@ -1,7 +1,7 @@
-package cn.hezhaohui.thumb.manager.cache;
+package cn.baiwanli.thumb.manager.cache;
 
-import cn.hezhaohui.thumb.mapper.ThumbMapper;
-import cn.hezhaohui.thumb.model.entity.Thumb;
+import cn.baiwanli.thumb.mapper.ThumbMapper;
+import cn.baiwanli.thumb.model.entity.Thumb;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.google.common.hash.BloomFilter;
 import com.google.common.hash.Funnels;

@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.exception;
+package cn.baiwanli.thumb.exception;
 
 public class ThrowUtils {
 

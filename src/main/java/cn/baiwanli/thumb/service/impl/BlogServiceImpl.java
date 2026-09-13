@@ -1,16 +1,16 @@
-package cn.hezhaohui.thumb.service.impl;
+package cn.baiwanli.thumb.service.impl;
 
-import cn.hezhaohui.thumb.model.entity.User;
-import cn.hezhaohui.thumb.model.vo.BlogVO;
-import cn.hezhaohui.thumb.service.ThumbService;
-import cn.hezhaohui.thumb.service.UserService;
-import cn.hezhaohui.thumb.util.RedisKeyUtil;
+import cn.baiwanli.thumb.model.entity.User;
+import cn.baiwanli.thumb.model.vo.BlogVO;
+import cn.baiwanli.thumb.service.ThumbService;
+import cn.baiwanli.thumb.service.UserService;
+import cn.baiwanli.thumb.util.RedisKeyUtil;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import cn.hezhaohui.thumb.model.entity.Blog;
-import cn.hezhaohui.thumb.service.BlogService;
-import cn.hezhaohui.thumb.mapper.BlogMapper;
+import cn.baiwanli.thumb.model.entity.Blog;
+import cn.baiwanli.thumb.service.BlogService;
+import cn.baiwanli.thumb.mapper.BlogMapper;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.context.annotation.Lazy;

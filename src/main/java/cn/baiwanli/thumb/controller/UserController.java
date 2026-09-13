@@ -1,10 +1,10 @@
-package cn.hezhaohui.thumb.controller;
+package cn.baiwanli.thumb.controller;
 
-import cn.hezhaohui.thumb.common.BaseResponse;
-import cn.hezhaohui.thumb.common.ResultUtils;
-import cn.hezhaohui.thumb.constant.UserConstant;
-import cn.hezhaohui.thumb.model.entity.User;
-import cn.hezhaohui.thumb.service.UserService;
+import cn.baiwanli.thumb.common.BaseResponse;
+import cn.baiwanli.thumb.common.ResultUtils;
+import cn.baiwanli.thumb.constant.UserConstant;
+import cn.baiwanli.thumb.model.entity.User;
+import cn.baiwanli.thumb.service.UserService;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;

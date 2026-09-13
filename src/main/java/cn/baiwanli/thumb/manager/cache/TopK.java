@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.manager.cache;
+package cn.baiwanli.thumb.manager.cache;
 
 import java.util.List;
 import java.util.concurrent.BlockingQueue;

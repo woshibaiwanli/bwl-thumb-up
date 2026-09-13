@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.manager.cache;
+package cn.baiwanli.thumb.manager.cache;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;

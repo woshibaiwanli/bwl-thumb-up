@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.model.dto;
+package cn.baiwanli.thumb.model.dto;
 
 import lombok.Data;
 

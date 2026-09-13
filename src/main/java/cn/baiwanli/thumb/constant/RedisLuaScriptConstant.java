@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.constant;
+package cn.baiwanli.thumb.constant;
 
 import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.data.redis.core.script.RedisScript;

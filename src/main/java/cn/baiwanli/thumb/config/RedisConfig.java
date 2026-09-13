@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.config;
+package cn.baiwanli.thumb.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;

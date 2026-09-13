@@ -1,6 +1,6 @@
-package cn.hezhaohui.thumb.common;
+package cn.baiwanli.thumb.common;
 
-import cn.hezhaohui.thumb.exception.ErrorCode;
+import cn.baiwanli.thumb.exception.ErrorCode;
 import lombok.Data;
 
 import java.io.Serializable;

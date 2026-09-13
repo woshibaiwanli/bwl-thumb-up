@@ -1,7 +1,7 @@
-package cn.hezhaohui.thumb.service;
+package cn.baiwanli.thumb.service;
 
-import cn.hezhaohui.thumb.model.dto.DoThumbRequest;
-import cn.hezhaohui.thumb.model.entity.Thumb;
+import cn.baiwanli.thumb.model.dto.DoThumbRequest;
+import cn.baiwanli.thumb.model.entity.Thumb;
 import com.baomidou.mybatisplus.extension.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
 

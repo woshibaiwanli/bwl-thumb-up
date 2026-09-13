@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hezhaohui.thumb.mapper.ThumbMapper">
+<mapper namespace="cn.baiwanli.thumb.mapper.ThumbMapper">
 
-    <resultMap id="BaseResultMap" type="cn.hezhaohui.thumb.model.entity.Thumb">
+    <resultMap id="BaseResultMap" type="cn.baiwanli.thumb.model.entity.Thumb">
             <id property="id" column="id" />
             <result property="userid" column="userId" />
             <result property="blogId" column="blogId" />

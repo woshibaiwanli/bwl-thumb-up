@@ -1,10 +1,10 @@
-package cn.hezhaohui.thumb.service.impl;
+package cn.baiwanli.thumb.service.impl;
 
-import cn.hezhaohui.thumb.constant.UserConstant;
+import cn.baiwanli.thumb.constant.UserConstant;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import cn.hezhaohui.thumb.model.entity.User;
-import cn.hezhaohui.thumb.service.UserService;
-import cn.hezhaohui.thumb.mapper.UserMapper;
+import cn.baiwanli.thumb.model.entity.User;
+import cn.baiwanli.thumb.service.UserService;
+import cn.baiwanli.thumb.mapper.UserMapper;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 

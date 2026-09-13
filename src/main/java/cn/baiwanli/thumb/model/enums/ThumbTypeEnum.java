@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.model.enums;
+package cn.baiwanli.thumb.model.enums;
 
 import lombok.Getter;
 

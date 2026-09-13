@@ -1,7 +1,7 @@
-package cn.hezhaohui.thumb.service;
+package cn.baiwanli.thumb.service;
 
-import cn.hezhaohui.thumb.model.entity.Blog;
-import cn.hezhaohui.thumb.model.vo.BlogVO;
+import cn.baiwanli.thumb.model.entity.Blog;
+import cn.baiwanli.thumb.model.vo.BlogVO;
 import com.baomidou.mybatisplus.extension.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
 

@@ -1,6 +1,6 @@
-package cn.hezhaohui.thumb.util;
+package cn.baiwanli.thumb.util;
 
-import cn.hezhaohui.thumb.constant.ThumbConstant;
+import cn.baiwanli.thumb.constant.ThumbConstant;
 
 public class RedisKeyUtil {
 

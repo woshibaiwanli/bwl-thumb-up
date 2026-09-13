@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb;
+package cn.baiwanli.thumb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

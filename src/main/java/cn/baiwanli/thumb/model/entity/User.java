@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.model.entity;
+package cn.baiwanli.thumb.model.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;

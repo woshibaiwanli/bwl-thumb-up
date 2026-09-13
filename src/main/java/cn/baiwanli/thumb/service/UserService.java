@@ -1,6 +1,6 @@
-package cn.hezhaohui.thumb.service;
+package cn.baiwanli.thumb.service;
 
-import cn.hezhaohui.thumb.model.entity.User;
+import cn.baiwanli.thumb.model.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import jakarta.servlet.http.HttpServletRequest;
 

@@ -1,7 +1,7 @@
-package cn.hezhaohui.thumb.exception;
+package cn.baiwanli.thumb.exception;
 
-import cn.hezhaohui.thumb.common.BaseResponse;
-import cn.hezhaohui.thumb.common.ResultUtils;
+import cn.baiwanli.thumb.common.BaseResponse;
+import cn.baiwanli.thumb.common.ResultUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.util;
+package cn.baiwanli.thumb.util;
 
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;

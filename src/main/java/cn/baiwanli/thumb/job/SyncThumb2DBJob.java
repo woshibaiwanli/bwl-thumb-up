@@ -1,10 +1,10 @@
-package cn.hezhaohui.thumb.job;
+package cn.baiwanli.thumb.job;
 
-import cn.hezhaohui.thumb.mapper.BlogMapper;
-import cn.hezhaohui.thumb.model.entity.Thumb;
-import cn.hezhaohui.thumb.model.enums.ThumbTypeEnum;
-import cn.hezhaohui.thumb.service.ThumbService;
-import cn.hezhaohui.thumb.util.RedisKeyUtil;
+import cn.baiwanli.thumb.mapper.BlogMapper;
+import cn.baiwanli.thumb.model.entity.Thumb;
+import cn.baiwanli.thumb.model.enums.ThumbTypeEnum;
+import cn.baiwanli.thumb.service.ThumbService;
+import cn.baiwanli.thumb.util.RedisKeyUtil;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.date.DateTime;
 import cn.hutool.core.date.DateUtil;

@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.model.vo;
+package cn.baiwanli.thumb.model.vo;
 
 import lombok.Data;
 

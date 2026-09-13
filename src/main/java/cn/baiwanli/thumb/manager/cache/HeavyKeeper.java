@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.manager.cache;
+package cn.baiwanli.thumb.manager.cache;
 
 import java.util.*;
 import java.util.concurrent.*;

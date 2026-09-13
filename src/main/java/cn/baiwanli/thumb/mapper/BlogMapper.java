@@ -1,6 +1,6 @@
-package cn.hezhaohui.thumb.mapper;
+package cn.baiwanli.thumb.mapper;
 
-import cn.hezhaohui.thumb.model.entity.Blog;
+import cn.baiwanli.thumb.model.entity.Blog;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -10,7 +10,7 @@ import java.util.Map;
 * @author 23117
 * @description 针对表【blog】的数据库操作Mapper
 * @createDate 2025-10-18 14:50:16
-* @Entity cn.hezhaohui.thumb.model.entity.Blog
+* @Entity cn.baiwanli.thumb.model.entity.Blog
 */
 public interface BlogMapper extends BaseMapper<Blog> {
     void batchUpdateThumbCount(@Param("countMap") Map<Long, Long> countMap);

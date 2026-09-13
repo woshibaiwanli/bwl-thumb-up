@@ -1,4 +1,4 @@
-package cn.hezhaohui.thumb.common;
+package cn.baiwanli.thumb.common;
 
 import lombok.Data;
 
